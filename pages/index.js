@@ -2,9 +2,30 @@ import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
 
+import axios from 'axios'
+
+
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
   const [result, setResult] = useState();
+
+
+//This is the function that gets the information from console log
+    function callNessie() {
+     console.log('being called')
+ axios.get('/api/nessie').then(client => {
+
+   for (let i = 0; i < 10; i++) {
+
+     console.log(client.data.dataResults[i])
+
+   }
+
+
+})
+  }
+
+  callNessie()
 
   async function onSubmit(event) {
     event.preventDefault();
